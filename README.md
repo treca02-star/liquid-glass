@@ -23,7 +23,7 @@ npx skills add nutlope/hallmark -g
 npx skills add treca02-star/liquid-glass -g
 ```
 
-Репозиторий закрытый: вторая команда сработает только там, где выполнен вход в GitHub с доступом к нему.
+Первая команда ставит Hallmark, вторая сам скилл.
 
 ## Как пользоваться
 
