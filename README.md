@@ -20,10 +20,10 @@ npx skills add nutlope/hallmark -g
 ```
 
 ```bash
-npx skills add OWNER/REPO -g
+npx skills add treca02-star/liquid-glass -g
 ```
 
-Во второй команде замените `OWNER/REPO` на адрес этого репозитория.
+Репозиторий закрытый: вторая команда сработает только там, где выполнен вход в GitHub с доступом к нему.
 
 ## Как пользоваться
 
