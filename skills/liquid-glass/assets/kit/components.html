@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Витрина: компоненты</title>
+<meta name="description" content="Все детали стеклянного набора на одной странице: кнопки, поля, выбор, плитки, шторка и меню.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400..700&display=swap">
+<link rel="stylesheet" href="glass.css">
+<script src="glass.js"></script>
+</head>
+<body>
+<div class="edge-fade" aria-hidden="true"></div>
+<header class="bar">
+  <div class="bar__inner">
+    <a class="brand glass" href="index.html" aria-label="Витрина, на главную">
+      <svg class="brand__mark" viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="1" width="9" height="9" rx="3"/><rect x="12" y="1" width="9" height="9" rx="3" opacity=".45"/><rect x="1" y="12" width="9" height="9" rx="3" opacity=".45"/><rect x="12" y="12" width="9" height="9" rx="3"/></svg>
+      <span>Витрина</span>
+    </a>
+    <div class="bar__title glass" aria-hidden="true">Компоненты</div>
+    <div class="bar__actions">
+      <button class="icon-btn glass" type="button" data-sheet-open="sheet-all" aria-label="Все действия"><svg class="icon" aria-hidden="true"><use href="#i-sheet"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main class="app">
+  <div class="page-head">
+    <h1 class="page-title">Компоненты</h1>
+    <p class="page-note">Прокрутите страницу: меню внизу сожмётся, а&nbsp;название появится в&nbsp;шапке.</p>
+  </div>
+
+  <div class="bento bento--flow">
+    <section class="module c6" aria-labelledby="h-buttons">
+      <div class="module__head"><h2 class="module__title" id="h-buttons">Кнопки</h2></div>
+      <div class="cluster">
+        <button class="btn" type="button" data-say="Основная кнопка: одна на экран">Основная</button>
+        <button class="btn btn--quiet" type="button" data-say="Тихая кнопка: для второстепенного">Тихая</button>
+        <button class="btn btn--quiet" type="button" data-say="Кнопка с иконкой"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>С иконкой</button>
+        <button class="btn btn--quiet" type="button" disabled>Недоступная</button>
+      </div>
+      <div class="cluster">
+        <button class="btn btn--quiet btn--sm" type="button" data-say="Маленькая кнопка">Маленькая</button>
+        <button class="icon-btn" type="button" aria-label="Скопировать" data-say="Круглая кнопка с иконкой"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button>
+        <button class="icon-btn" type="button" aria-label="Удалить" data-say="Круглая кнопка с иконкой"><svg class="icon" aria-hidden="true"><use href="#i-trash"/></svg></button>
+      </div>
+    </section>
+
+    <section class="module c6" aria-labelledby="h-fields">
+      <div class="module__head"><h2 class="module__title" id="h-fields">Поля</h2></div>
+      <form class="stack" id="fields-form" novalidate>
+        <div class="field-row">
+          <label class="field"><span class="field__label">Имя</span><input class="input" name="name" type="text" autocomplete="given-name" required><span class="field__hint"></span></label>
+          <label class="field"><span class="field__label">Почта</span><input class="input" name="email" type="email" inputmode="email" autocomplete="email" required><span class="field__hint"></span></label>
+          <label class="field"><span class="field__label">Раздел</span>
+            <select class="select" name="topic"><option>Вопрос</option><option>Заказ</option><option>Другое</option></select><span class="field__hint"></span>
+          </label>
+        </div>
+        <div class="cluster">
+          <button class="btn" type="submit">Проверить поля</button>
+          <span class="module__meta">Никуда не&nbsp;отправляется, только проверка.</span>
+        </div>
+      </form>
+    </section>
+
+    <section class="module c6" aria-labelledby="h-choice">
+      <div class="module__head"><h2 class="module__title" id="h-choice">Выбор</h2></div>
+      <fieldset class="chips" aria-label="Период">
+        <label class="chip"><input class="visually-hidden" type="radio" name="period" checked><span>День</span></label>
+        <label class="chip"><input class="visually-hidden" type="radio" name="period"><span>Неделя</span></label>
+        <label class="chip"><input class="visually-hidden" type="radio" name="period"><span>Месяц</span></label>
+        <label class="chip"><input class="visually-hidden" type="radio" name="period"><span>Год</span></label>
+        <label class="chip"><input class="visually-hidden" type="radio" name="period" disabled><span>Всё время</span></label>
+      </fieldset>
+      <div class="cluster">
+        <label class="switch"><input type="checkbox" checked><span>Уведомления</span></label>
+        <label class="switch"><input type="checkbox"><span>Звук</span></label>
+      </div>
+      <label class="field"><span class="field__label">Громкость</span>
+        <span class="range-row"><input class="range" id="volume" type="range" min="0" max="100" value="60"><output for="volume" id="volume-out">60</output></span>
+      </label>
+    </section>
+
+    <section class="module c6" aria-labelledby="h-glass">
+      <div class="module__head"><h2 class="module__title" id="h-glass">Стекло</h2></div>
+      <div class="scene">
+        <div class="scene__dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="scene__glass glass" data-lens="30">Стекло поверх цвета</div>
+      </div>
+      <div class="module__foot">
+        <button class="btn btn--quiet" type="button" data-sheet-open="sheet-all">Открыть шторку</button>
+        <button class="btn btn--quiet" type="button" popovertarget="menu-demo">Меню из&nbsp;кнопки</button>
+        <button class="btn btn--quiet" type="button" data-say="Так выглядит уведомление">Уведомление</button>
+      </div>
+    </section>
+
+    <div class="stack c12">
+      <p class="group-label">Плитки: одно действие на&nbsp;плитку</p>
+      <div class="tiles tiles--auto">
+        <button class="tile" type="button" data-say="Плитка «Создать»"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Создать</button>
+        <button class="tile" type="button" data-say="Плитка «Скачать»"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Скачать</button>
+        <button class="tile" type="button" data-say="Плитка «Копировать»"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>Копировать</button>
+        <button class="tile" type="button" data-say="Плитка «Напомнить»"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg>Напомнить</button>
+        <button class="tile" type="button" data-say="Плитка «Таймер»"><svg class="icon" aria-hidden="true"><use href="#i-timer"/></svg>Таймер</button>
+        <button class="tile" type="button" disabled><svg class="icon" aria-hidden="true"><use href="#i-trash"/></svg>Недоступно</button>
+      </div>
+    </div>
+
+    <section class="module c4" aria-labelledby="h-loading">
+      <div class="module__head"><h2 class="module__title" id="h-loading">Загрузка</h2></div>
+      <div class="stack" aria-hidden="true"><span class="skeleton"></span><span class="skeleton skeleton--short"></span><span class="skeleton"></span></div>
+      <p class="module__meta">Пока данные идут, блок держит форму.</p>
+    </section>
+    <section class="module c4" aria-labelledby="h-empty">
+      <div class="module__head"><h2 class="module__title" id="h-empty">Пусто</h2></div>
+      <p class="empty">Здесь появятся ваши записи.</p>
+      <div class="module__foot"><button class="btn btn--quiet btn--sm" type="button" data-say="Действие, которое наполняет блок">Добавить запись</button></div>
+    </section>
+    <section class="module c4" aria-labelledby="h-error">
+      <div class="module__head"><h2 class="module__title" id="h-error">Ошибка</h2></div>
+      <p class="empty state-error">Не удалось загрузить. Проверьте соединение.</p>
+      <div class="module__foot"><button class="btn btn--quiet btn--sm" type="button" data-say="Повторная попытка">Повторить</button></div>
+    </section>
+
+    <section class="module c12" aria-labelledby="h-kit">
+      <div class="module__head"><h2 class="module__title" id="h-kit">Что входит в набор</h2></div>
+      <table class="table">
+        <thead><tr><th scope="col">Деталь</th><th scope="col">Для чего</th><th scope="col">Где посмотреть</th></tr></thead>
+        <tbody>
+          <tr><td>Модуль</td><td>Серый скруглённый блок. Из&nbsp;модулей собирается весь экран.</td><td>Обзор</td></tr>
+          <tr><td>Плитка</td><td>Модуль-кнопка с&nbsp;иконкой: одно действие.</td><td>Обзор, эта страница</td></tr>
+          <tr><td>Таблетки</td><td>Выбор одного варианта из&nbsp;нескольких.</td><td>Таймер, конвертер</td></tr>
+          <tr><td>Поле</td><td>Ввод текста и&nbsp;чисел. Ширина ограничена, поля стоят в&nbsp;ряд.</td><td>Конвертер, задачи</td></tr>
+          <tr><td>Шторка</td><td>Панель поверх экрана для короткого дела.</td><td>Быстрая задача</td></tr>
+          <tr><td>Меню из&nbsp;кнопки</td><td>Список действий, вырастает из&nbsp;кнопки.</td><td>Кнопка с&nbsp;тремя точками на&nbsp;обзоре</td></tr>
+          <tr><td>Меню разделов</td><td>Переход между страницами. Сжимается при прокрутке.</td><td>Внизу экрана</td></tr>
+          <tr><td>Капсула состояния</td><td>Показывает идущий процесс рядом с&nbsp;меню.</td><td>Запустите таймер</td></tr>
+          <tr><td>Уведомление</td><td>Короткий ответ на&nbsp;действие, иногда с&nbsp;отменой.</td><td>Любая кнопка здесь</td></tr>
+          <tr><td>Шапка</td><td>Название страницы появляется при прокрутке.</td><td>Эта страница</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</main>
+
+<div id="menu-demo" class="menu glass" popover>
+  <div class="menu__label">Пример меню</div>
+  <button class="menu__item" type="button" data-say="Пункт «Изменить»"><svg class="icon" aria-hidden="true"><use href="#i-sliders"/></svg>Изменить</button>
+  <button class="menu__item" type="button" data-say="Пункт «Скопировать»"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>Скопировать</button>
+  <hr class="menu__sep">
+  <button class="menu__item" type="button" data-say="Пункт «Удалить»"><svg class="icon" aria-hidden="true"><use href="#i-trash"/></svg>Удалить</button>
+</div>
+
+<dialog class="sheet" id="sheet-all" aria-labelledby="sheet-all-title">
+  <div class="sheet__grab" aria-hidden="true"></div>
+  <div class="sheet__head">
+    <h2 class="sheet__title" id="sheet-all-title">Все действия</h2>
+    <button class="icon-btn" type="button" data-sheet-close aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+  </div>
+  <div class="sheet__body">
+    <div>
+      <p class="group-label">Создание</p>
+      <div class="tiles">
+        <button class="tile" type="button" data-say="Плитка «Создать»"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Создать</button>
+        <button class="tile" type="button" data-say="Плитка «Копировать»"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>Копировать</button>
+      </div>
+    </div>
+    <div>
+      <p class="group-label">Данные</p>
+      <div class="tiles tiles--3">
+        <button class="tile" type="button" data-say="Плитка «Скачать»"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Скачать</button>
+        <button class="tile" type="button" data-say="Плитка «Напомнить»"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg>Напомнить</button>
+        <button class="tile" type="button" disabled><svg class="icon" aria-hidden="true"><use href="#i-trash"/></svg>Недоступно</button>
+      </div>
+    </div>
+  </div>
+  <div class="sheet__foot"><button class="btn btn--block" type="button" data-sheet-close>Готово</button></div>
+</dialog>
+
+<div class="dockbar" data-dock>
+  <nav class="dock glass" data-lens aria-label="Разделы">
+    <a class="dock__tab" href="index.html"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg><span class="dock__label">Обзор</span></a>
+    <a class="dock__tab" href="components.html" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg><span class="dock__label">Компоненты</span></a>
+    <a class="dock__tab" href="settings.html"><svg class="icon" aria-hidden="true"><use href="#i-sliders"/></svg><span class="dock__label">Настройка</span></a>
+  </nav>
+  <a class="dock-status glass" href="index.html#timer" aria-label="Таймер идёт, открыть" hidden><svg class="icon" aria-hidden="true"><use href="#i-timer"/></svg><span data-time>00:00</span></a>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const { toast } = glass;
+  document.addEventListener('click', event => {
+    const say = event.target.closest('[data-say]')?.dataset.say;
+    if (say) toast(say);
+  });
+  const volume = document.querySelector('#volume'), volumeOut = document.querySelector('#volume-out');
+  volume.addEventListener('input', () => { volumeOut.textContent = volume.value; });
+
+  /* Проверка полей: ошибка рядом с полем, фокус на первом неверном */
+  const form = document.querySelector('#fields-form');
+  const MESSAGES = { name: 'Напишите имя', email: 'Нужна почта вида name@site.ru' };
+  function check(input) {
+    const bad = !input.checkValidity();
+    const hint = input.closest('.field').querySelector('.field__hint');
+    input.setAttribute('aria-invalid', bad);
+    hint.textContent = bad ? MESSAGES[input.name] ?? 'Проверьте поле' : '';
+    hint.classList.toggle('field__hint--error', bad);
+    return !bad;
+  }
+  form.querySelectorAll('.input').forEach(input => input.addEventListener('blur', () => { if (input.value) check(input); }));
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    const inputs = [...form.querySelectorAll('.input')];
+    const firstBad = inputs.filter(input => !check(input))[0];
+    if (firstBad) firstBad.focus(); else toast('Все поля заполнены верно');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Витрина: обзор</title>
+<meta name="description" content="Демо стеклянного набора: рабочие модули на одном экране без прокрутки страницы.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400..700&display=swap">
+<link rel="stylesheet" href="glass.css">
+<script src="glass.js"></script>
+</head>
+<body>
+<div class="edge-fade" aria-hidden="true"></div>
+<header class="bar">
+  <div class="bar__inner">
+    <a class="brand glass" href="index.html" aria-label="Витрина, на главную">
+      <svg class="brand__mark" viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="1" width="9" height="9" rx="3"/><rect x="12" y="1" width="9" height="9" rx="3" opacity=".45"/><rect x="1" y="12" width="9" height="9" rx="3" opacity=".45"/><rect x="12" y="12" width="9" height="9" rx="3"/></svg>
+      <span>Витрина</span>
+    </a>
+    <div class="bar__title glass" aria-hidden="true">Обзор</div>
+    <div class="bar__actions">
+      <button class="icon-btn glass" type="button" popovertarget="menu-more" aria-label="Действия с данными"><svg class="icon" aria-hidden="true"><use href="#i-more"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div id="menu-more" class="menu glass" popover>
+  <div class="menu__label">Данные демо</div>
+  <button class="menu__item" type="button" data-act="export"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Экспорт задач</button>
+  <button class="menu__item" type="button" data-act="clear-done"><svg class="icon" aria-hidden="true"><use href="#i-trash"/></svg>Убрать готовые</button>
+  <hr class="menu__sep">
+  <button class="menu__item" type="button" data-act="reset-all"><svg class="icon" aria-hidden="true"><use href="#i-reset"/></svg>Сбросить все данные</button>
+</div>
+
+<main class="app app--fit">
+  <div class="page-head">
+    <h1 class="page-title">Обзор</h1>
+    <p class="page-note">Всё на этом экране работает и&nbsp;сохраняется в&nbsp;вашем браузере.</p>
+  </div>
+
+  <div class="bento">
+    <section class="module c4 r6" aria-labelledby="h-tasks">
+      <div class="module__head">
+        <h2 class="module__title" id="h-tasks">Задачи</h2>
+        <span class="module__meta" id="tasks-count"></span>
+      </div>
+      <form class="input-group" id="task-form">
+        <input class="input" id="task-input" name="task" type="text" aria-label="Новая задача" placeholder="Что сделать" autocomplete="off" maxlength="120">
+        <button class="btn" type="submit">Добавить</button>
+      </form>
+      <div class="module__body">
+        <ul class="rows" id="task-list"></ul>
+        <p class="empty" id="task-empty">Пока пусто. Добавьте первую задачу.</p>
+      </div>
+    </section>
+
+    <section class="module c4 r3" id="timer" aria-labelledby="h-timer">
+      <div class="module__head">
+        <h2 class="module__title" id="h-timer">Таймер</h2>
+        <span class="module__meta" id="timer-state"></span>
+      </div>
+      <output class="figure-xl" id="timer-out" aria-live="off">25:00</output>
+      <fieldset class="chips" id="timer-chips" aria-label="Длительность">
+        <label class="chip"><input class="visually-hidden" type="radio" name="minutes" value="5"><span>5&nbsp;мин</span></label>
+        <label class="chip"><input class="visually-hidden" type="radio" name="minutes" value="15"><span>15&nbsp;мин</span></label>
+        <label class="chip"><input class="visually-hidden" type="radio" name="minutes" value="25" checked><span>25&nbsp;мин</span></label>
+        <label class="chip"><input class="visually-hidden" type="radio" name="minutes" value="45"><span>45&nbsp;мин</span></label>
+      </fieldset>
+      <div class="module__foot">
+        <button class="btn" type="button" id="timer-toggle">Старт</button>
+        <button class="btn btn--quiet" type="button" id="timer-reset">Сброс</button>
+      </div>
+    </section>
+
+    <section class="module c4 r3" aria-labelledby="h-conv">
+      <div class="module__head">
+        <h2 class="module__title" id="h-conv">Конвертер</h2>
+      </div>
+      <fieldset class="chips" id="conv-chips" aria-label="Что переводим">
+        <label class="chip"><input class="visually-hidden" type="radio" name="kind" value="length" checked><span>Длина</span></label>
+        <label class="chip"><input class="visually-hidden" type="radio" name="kind" value="weight"><span>Вес</span></label>
+        <label class="chip"><input class="visually-hidden" type="radio" name="kind" value="temp"><span>Температура</span></label>
+      </fieldset>
+      <div class="field-row">
+        <label class="field"><span class="field__label" id="conv-a-label">Километры</span><input class="input" id="conv-a" type="text" inputmode="decimal" autocomplete="off" value="10"></label>
+        <label class="field"><span class="field__label" id="conv-b-label">Мили</span><input class="input" id="conv-b" type="text" inputmode="decimal" autocomplete="off"></label>
+      </div>
+      <p class="field__hint" id="conv-hint" aria-live="polite"></p>
+    </section>
+
+    <section class="module c5 r3" aria-labelledby="h-note">
+      <div class="module__head">
+        <h2 class="module__title" id="h-note">Заметка</h2>
+        <span class="module__meta" id="note-state" aria-live="polite"></span>
+      </div>
+      <textarea class="textarea" id="note" aria-labelledby="h-note" placeholder="Пишите здесь, сохранится само"></textarea>
+    </section>
+
+    <div class="tiles c3 r3" role="group" aria-label="Быстрые действия">
+      <button class="tile" type="button" data-sheet-open="sheet-task"><svg class="icon" aria-hidden="true"><use href="#i-sheet"/></svg>Быстрая задача</button>
+      <button class="tile" type="button" data-act="export"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Экспорт задач</button>
+      <button class="tile" type="button" data-act="clear-done"><svg class="icon" aria-hidden="true"><use href="#i-trash"/></svg>Убрать готовые</button>
+      <button class="tile" type="button" data-act="copy-note"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>Скопировать заметку</button>
+    </div>
+  </div>
+</main>
+
+<dialog class="sheet" id="sheet-task" aria-labelledby="sheet-task-title">
+  <div class="sheet__grab" aria-hidden="true"></div>
+  <div class="sheet__head">
+    <h2 class="sheet__title" id="sheet-task-title">Быстрая задача</h2>
+    <button class="icon-btn" type="button" data-sheet-close aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+  </div>
+  <form class="sheet__form" method="dialog" id="quick-form">
+    <div class="sheet__body">
+      <label class="field"><span class="field__label">Что сделать</span><input class="input" name="text" type="text" autocomplete="off" maxlength="120" required></label>
+      <div>
+        <p class="group-label" id="when-label">Когда</p>
+        <fieldset class="chips chips--on-paper" aria-labelledby="when-label">
+          <label class="chip"><input class="visually-hidden" type="radio" name="when" value="сегодня" checked><span>Сегодня</span></label>
+          <label class="chip"><input class="visually-hidden" type="radio" name="when" value="завтра"><span>Завтра</span></label>
+          <label class="chip"><input class="visually-hidden" type="radio" name="when" value="на неделе"><span>На неделе</span></label>
+          <label class="chip"><input class="visually-hidden" type="radio" name="when" value=""><span>Без срока</span></label>
+        </fieldset>
+      </div>
+    </div>
+    <div class="sheet__foot"><button class="btn btn--block" type="submit">Добавить задачу</button></div>
+  </form>
+</dialog>
+
+<div class="dockbar" data-dock>
+  <nav class="dock glass" data-lens aria-label="Разделы">
+    <a class="dock__tab" href="index.html" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg><span class="dock__label">Обзор</span></a>
+    <a class="dock__tab" href="components.html"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg><span class="dock__label">Компоненты</span></a>
+    <a class="dock__tab" href="settings.html"><svg class="icon" aria-hidden="true"><use href="#i-sliders"/></svg><span class="dock__label">Настройка</span></a>
+  </nav>
+  <a class="dock-status glass" href="index.html#timer" aria-label="Таймер идёт, открыть" hidden><svg class="icon" aria-hidden="true"><use href="#i-timer"/></svg><span data-time>00:00</span></a>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const { store, toast, fmtTime } = glass;
+  const $ = selector => document.querySelector(selector);
+
+  /* ---- Задачи ---- */
+  let tasks = store.get('demo:tasks', []);
+  const list = $('#task-list'), empty = $('#task-empty'), count = $('#tasks-count');
+  const updateCount = () => {
+    empty.hidden = tasks.length > 0;
+    count.textContent = tasks.length ? `${tasks.filter(t => t.done).length} из ${tasks.length}` : '';
+  };
+  const persist = () => { store.set('demo:tasks', tasks); updateCount(); };
+  function renderTasks() {
+    list.replaceChildren(...tasks.map(task => {
+      const row = Object.assign(document.createElement('li'), { className: 'row' });
+      const check = Object.assign(document.createElement('input'), { type: 'checkbox', className: 'check', checked: task.done });
+      check.setAttribute('aria-label', `Готово: ${task.text}`);
+      check.addEventListener('change', () => { task.done = check.checked; persist(); });
+      row.append(check, Object.assign(document.createElement('span'), { className: 'row__text', textContent: task.text }));
+      if (task.when) row.append(Object.assign(document.createElement('span'), { className: 'row__meta', textContent: task.when }));
+      return row;
+    }));
+    updateCount();
+  }
+  function setTasks(next) { tasks = next; store.set('demo:tasks', tasks); renderTasks(); }
+  function addTask(text, when = '') { setTasks([{ text, when, done: false }, ...tasks]); }
+  renderTasks();
+
+  $('#task-form').addEventListener('submit', event => {
+    event.preventDefault();
+    const input = $('#task-input'), text = input.value.trim();
+    if (!text) { input.focus(); return; }
+    addTask(text);
+    input.value = '';
+  });
+  $('#quick-form').addEventListener('submit', event => {
+    const data = new FormData(event.target), text = String(data.get('text')).trim();
+    if (!text) { event.preventDefault(); return; }
+    addTask(text, data.get('when'));
+    toast('Задача добавлена');
+    setTimeout(() => event.target.reset(), 300);
+  });
+
+  /* ---- Таймер ---- */
+  let timer = store.get('glass:timer', null) ?? { duration: 1500, end: null, left: 1500 };
+  const out = $('#timer-out'), toggle = $('#timer-toggle'), state = $('#timer-state');
+  const remaining = () => timer.end ? Math.max(0, Math.round((timer.end - Date.now()) / 1000)) : timer.left;
+  const saveTimer = () => { store.set('glass:timer', timer); renderTimer(); };
+  function renderTimer() {
+    const left = remaining();
+    if (timer.end && left === 0) { timer = { ...timer, end: null, left: timer.duration }; store.set('glass:timer', timer); toast('Время вышло'); }
+    out.textContent = fmtTime(remaining());
+    const paused = !timer.end && timer.left < timer.duration;
+    toggle.textContent = timer.end ? 'Пауза' : paused ? 'Продолжить' : 'Старт';
+    state.textContent = timer.end ? 'идёт' : paused ? 'пауза' : '';
+  }
+  document.querySelectorAll('#timer-chips input').forEach(input => {
+    input.checked = Number(input.value) * 60 === timer.duration;
+    input.addEventListener('change', () => { timer = { duration: input.value * 60, end: null, left: input.value * 60 }; saveTimer(); });
+  });
+  toggle.addEventListener('click', () => {
+    timer = timer.end ? { ...timer, end: null, left: remaining() } : { ...timer, end: Date.now() + timer.left * 1000 };
+    saveTimer();
+  });
+  $('#timer-reset').addEventListener('click', () => { timer = { ...timer, end: null, left: timer.duration }; saveTimer(); });
+  renderTimer();
+  setInterval(renderTimer, 250);
+
+  /* ---- Конвертер ---- */
+  const KINDS = {
+    length: { a: 'Километры', b: 'Мили', toB: v => v * 0.621371, toA: v => v / 0.621371 },
+    weight: { a: 'Килограммы', b: 'Фунты', toB: v => v * 2.20462, toA: v => v / 2.20462 },
+    temp: { a: 'Градусы Цельсия', b: 'Градусы Фаренгейта', toB: v => v * 9 / 5 + 32, toA: v => (v - 32) * 5 / 9 }
+  };
+  const fieldA = $('#conv-a'), fieldB = $('#conv-b'), hint = $('#conv-hint');
+  let kind = KINDS.length;
+  const parse = text => { const value = Number(text.trim().replace(/\s/g, '').replace(',', '.')); return text.trim() === '' ? NaN : value; };
+  const format = value => String(Math.round(value * 100) / 100).replace('.', ',');
+  function convert(from, to, fn) {
+    const value = parse(from.value), bad = from.value.trim() !== '' && Number.isNaN(value);
+    from.setAttribute('aria-invalid', bad);
+    to.setAttribute('aria-invalid', false);
+    hint.textContent = bad ? 'Введите число, например 12,5' : '';
+    hint.classList.toggle('field__hint--error', bad);
+    to.value = Number.isNaN(value) ? '' : format(fn(value));
+  }
+  fieldA.addEventListener('input', () => convert(fieldA, fieldB, kind.toB));
+  fieldB.addEventListener('input', () => convert(fieldB, fieldA, kind.toA));
+  document.querySelectorAll('#conv-chips input').forEach(input => input.addEventListener('change', () => {
+    kind = KINDS[input.value];
+    $('#conv-a-label').textContent = kind.a;
+    $('#conv-b-label').textContent = kind.b;
+    convert(fieldA, fieldB, kind.toB);
+  }));
+  convert(fieldA, fieldB, kind.toB);
+
+  /* ---- Заметка ---- */
+  const note = $('#note'), noteState = $('#note-state');
+  let noteTimer;
+  note.value = store.get('demo:note', '');
+  note.addEventListener('input', () => {
+    noteState.textContent = '';
+    clearTimeout(noteTimer);
+    noteTimer = setTimeout(() => { store.set('demo:note', note.value); noteState.textContent = 'Сохранено'; }, 400);
+  });
+
+  /* ---- Действия плиток и меню ---- */
+  const actions = {
+    export() {
+      if (!tasks.length) return toast('Задач пока нет');
+      const text = tasks.map(t => `${t.done ? '[x]' : '[ ]'} ${t.text}${t.when ? ` (${t.when})` : ''}`).join('\n');
+      const link = Object.assign(document.createElement('a'), { href: URL.createObjectURL(new Blob([text], { type: 'text/plain' })), download: 'zadachi.txt' });
+      link.click();
+      URL.revokeObjectURL(link.href);
+      toast('Файл zadachi.txt скачан');
+    },
+    'clear-done'() {
+      const before = tasks, done = tasks.filter(t => t.done).length;
+      if (!done) return toast('Готовых задач нет');
+      setTasks(tasks.filter(t => !t.done));
+      toast(`Убрано: ${done}`, { label: 'Вернуть', run: () => setTasks(before) });
+    },
+    'copy-note'() {
+      if (!note.value.trim()) return toast('Заметка пустая');
+      navigator.clipboard.writeText(note.value).then(() => toast('Заметка скопирована'), () => toast('Не удалось скопировать'));
+    },
+    'reset-all'() {
+      const before = { tasks, note: note.value, timer };
+      setTasks([]); note.value = ''; store.set('demo:note', '');
+      timer = { duration: timer.duration, end: null, left: timer.duration }; saveTimer();
+      toast('Данные сброшены', { label: 'Вернуть', run: () => { setTasks(before.tasks); note.value = before.note; store.set('demo:note', before.note); timer = before.timer; saveTimer(); } });
+    }
+  };
+  document.addEventListener('click', event => {
+    const act = event.target.closest('[data-act]')?.dataset.act;
+    if (act && actions[act]) actions[act]();
+  });
+});
+</script>
+</body>
+</html>

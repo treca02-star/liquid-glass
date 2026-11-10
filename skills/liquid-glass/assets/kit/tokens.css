@@ -1,0 +1,38 @@
+:root {
+  /* Шкала Hallmark (app screen) */
+  --space-3xs: 2px; --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px; --space-4xl: 144px;
+  --text-xs: 0.75rem; --text-sm: 0.875rem; --text-md: 1rem; --text-lg: 1.2rem; --text-xl: 1.44rem; --text-2xl: 1.728rem; --text-3xl: 2.074rem;
+  --text-display-s: 1.44rem; --text-display: 1.728rem; --text-section: 1.2rem; --text-title: 1rem; --text-lead: 1rem;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-in: cubic-bezier(0.7, 0, 0.84, 0); --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
+  --color-error: oklch(52% 0.19 27); --color-success: oklch(50% 0.12 150);
+  --container: 1440px; --gutter: 24px; --gap-columns: 32px; --section-gap-s: 120px; --section-gap: 144px; --section-gap-l: 176px;
+  --z-base: 1; --z-raised: 10; --z-dropdown: 100; --z-sticky: 200; --z-sticky-nav: 300; --z-modal: 400; --z-toast: 500; --z-tooltip: 600;
+
+  /* Цвет: белый лист, серые модули, чёрное действие */
+  --color-paper: oklch(99% 0.002 250); --color-paper-2: oklch(96% 0.004 250); --color-paper-3: oklch(92.5% 0.005 250);
+  --color-ink: oklch(19% 0.008 250); --color-ink-2: oklch(33% 0.008 250); --color-muted: oklch(48% 0.01 250);
+  --color-rule: oklch(89% 0.005 250);
+  --color-accent: var(--accent-black); --color-accent-ink: oklch(99% 0.002 250); --color-focus: oklch(56% 0.19 255);
+  --accent-black: oklch(19% 0.008 250); --accent-blue: oklch(50% 0.19 258); --accent-green: oklch(47% 0.12 152); --accent-orange: oklch(52% 0.16 45);
+  --swatch-1: oklch(62% 0.19 255); --swatch-2: oklch(72% 0.16 150); --swatch-3: oklch(76% 0.16 70); --swatch-4: oklch(62% 0.21 25);
+
+  --font-display: "Onest", ui-sans-serif, system-ui, sans-serif; --font-body: "Onest", ui-sans-serif, system-ui, sans-serif; --font-outlier: var(--font-body);
+  --radius-card: 20px; --radius-pill: 999px; --rule-hair: 1px; --shadow-card: none;
+  --tracking-display: -0.02em; --text-figure: 3.2rem;
+
+  /* Стекло */
+  --glass-blur: 14px; --glass-sat: 1.7; --glass-alpha: 58%;
+  --glass-fill: color-mix(in oklab, var(--color-paper) var(--glass-alpha), transparent);
+  --glass-hi: oklch(100% 0 0 / 0.9); --glass-rim: oklch(100% 0 0 / 0.5); --glass-lo: oklch(20% 0.01 250 / 0.07);
+  --glass-shadow-a: oklch(20% 0.01 250 / 0.14); --glass-shadow-b: oklch(20% 0.01 250 / 0.08);
+  --scrim: oklch(20% 0.01 250 / 0.3); --mask-solid: oklch(0% 0 0); --track: oklch(83% 0.006 250);
+  --tint-hover: color-mix(in oklab, var(--color-ink) 6%, transparent);
+  --tint-current: color-mix(in oklab, var(--color-ink) 9%, transparent);
+
+  /* Модули и контролы */
+  --radius-control: 12px; --radius-sheet: 28px;
+  --control-h: 40px; --control-h-sm: 32px;
+  --module-gap: 12px; --module-pad: 16px;
+  --bar-h: 72px; --dock-space: 96px;
+}

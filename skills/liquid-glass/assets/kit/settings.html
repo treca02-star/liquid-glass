@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Витрина: настройка</title>
+<meta name="description" content="Живая настройка стеклянного набора: размытие, плотность стекла, скругление модулей, положение меню и акцент.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400..700&display=swap">
+<link rel="stylesheet" href="glass.css">
+<script src="glass.js"></script>
+</head>
+<body>
+<div class="edge-fade" aria-hidden="true"></div>
+<header class="bar">
+  <div class="bar__inner">
+    <a class="brand glass" href="index.html" aria-label="Витрина, на главную">
+      <svg class="brand__mark" viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="1" width="9" height="9" rx="3"/><rect x="12" y="1" width="9" height="9" rx="3" opacity=".45"/><rect x="1" y="12" width="9" height="9" rx="3" opacity=".45"/><rect x="12" y="12" width="9" height="9" rx="3"/></svg>
+      <span>Витрина</span>
+    </a>
+    <div class="bar__title glass" aria-hidden="true">Настройка</div>
+    <div class="bar__actions"></div>
+  </div>
+</header>
+
+<main class="app app--fit">
+  <div class="page-head">
+    <h1 class="page-title">Настройка</h1>
+    <p class="page-note">Двигайте ползунки: вид меняется сразу на&nbsp;всех страницах.</p>
+  </div>
+
+  <div class="bento bento--hug">
+    <section class="module c4" aria-labelledby="h-glass">
+      <div class="module__head"><h2 class="module__title" id="h-glass">Стекло</h2></div>
+      <label class="field"><span class="field__label">Размытие</span>
+        <span class="range-row"><input class="range" type="range" data-key="blur" min="0" max="30" step="1"><output></output></span>
+      </label>
+      <label class="field"><span class="field__label">Плотность</span>
+        <span class="range-row"><input class="range" type="range" data-key="alpha" min="20" max="90" step="1"><output></output></span>
+      </label>
+    </section>
+
+    <section class="module c3" aria-labelledby="h-modules">
+      <div class="module__head"><h2 class="module__title" id="h-modules">Модули</h2></div>
+      <label class="field"><span class="field__label">Скругление</span>
+        <span class="range-row"><input class="range" type="range" data-key="radius" min="8" max="32" step="1"><output></output></span>
+      </label>
+      <label class="field"><span class="field__label">Зазор</span>
+        <span class="range-row"><input class="range" type="range" data-key="gap" min="4" max="24" step="1"><output></output></span>
+      </label>
+    </section>
+
+    <section class="module pin-right" aria-labelledby="h-preview">
+      <div class="module__head"><h2 class="module__title" id="h-preview">Предпросмотр</h2></div>
+      <div class="scene">
+        <div class="scene__dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="scene__glass glass" data-lens="30">Стекло поверх цвета</div>
+      </div>
+      <div class="input-group">
+        <input class="input" type="text" aria-label="Пример поля" value="Пример поля">
+        <button class="btn" type="button" id="copy">Скопировать настройки</button>
+      </div>
+      <pre class="code" id="summary" aria-live="polite"></pre>
+      <div class="module__foot">
+        <button class="btn btn--quiet" type="button" id="reset">Вернуть как было</button>
+      </div>
+    </section>
+
+    <section class="module c4" aria-labelledby="h-dock">
+      <div class="module__head"><h2 class="module__title" id="h-dock">Меню разделов</h2></div>
+      <div>
+        <p class="group-label" id="l-pos">Где стоит</p>
+        <fieldset class="chips" aria-labelledby="l-pos">
+          <label class="chip"><input class="visually-hidden" type="radio" name="dock" value="bottom"><span>Снизу</span></label>
+          <label class="chip"><input class="visually-hidden" type="radio" name="dock" value="top"><span>Сверху</span></label>
+        </fieldset>
+      </div>
+      <div>
+        <p class="group-label" id="l-exp">Когда раскрывается обратно</p>
+        <fieldset class="chips" aria-labelledby="l-exp">
+          <label class="chip"><input class="visually-hidden" type="radio" name="expand" value="stop"><span>Когда остановились</span></label>
+          <label class="chip"><input class="visually-hidden" type="radio" name="expand" value="up"><span>Когда листаем вверх</span></label>
+        </fieldset>
+      </div>
+    </section>
+
+    <section class="module c3" aria-labelledby="h-accent">
+      <div class="module__head"><h2 class="module__title" id="h-accent">Акцент</h2></div>
+      <p class="group-label" id="l-accent">Цвет главных кнопок и&nbsp;выбранного</p>
+      <fieldset class="chips" aria-labelledby="l-accent">
+        <label class="chip"><input class="visually-hidden" type="radio" name="accent" value="black"><span>Чёрный</span></label>
+        <label class="chip"><input class="visually-hidden" type="radio" name="accent" value="blue"><span>Синий</span></label>
+        <label class="chip"><input class="visually-hidden" type="radio" name="accent" value="green"><span>Зелёный</span></label>
+        <label class="chip"><input class="visually-hidden" type="radio" name="accent" value="orange"><span>Оранжевый</span></label>
+      </fieldset>
+    </section>
+    <div class="tiles tiles--4 c7" role="group" aria-label="Пример модулей">
+      <button class="tile" type="button" data-say="Так выглядит плитка"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Создать</button>
+      <button class="tile" type="button" data-say="Так выглядит плитка"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Скачать</button>
+      <button class="tile" type="button" data-say="Так выглядит плитка"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>Копировать</button>
+      <button class="tile" type="button" data-say="Так выглядит плитка"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg>Напомнить</button>
+    </div>
+  </div>
+</main>
+
+<div class="dockbar" data-dock>
+  <nav class="dock glass" data-lens aria-label="Разделы">
+    <a class="dock__tab" href="index.html"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg><span class="dock__label">Обзор</span></a>
+    <a class="dock__tab" href="components.html"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg><span class="dock__label">Компоненты</span></a>
+    <a class="dock__tab" href="settings.html" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-sliders"/></svg><span class="dock__label">Настройка</span></a>
+  </nav>
+  <a class="dock-status glass" href="index.html#timer" aria-label="Таймер идёт, открыть" hidden><svg class="icon" aria-hidden="true"><use href="#i-timer"/></svg><span data-time>00:00</span></a>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const { settings, DEFAULTS, saveSettings, toast } = glass;
+  const UNITS = { blur: ' px', alpha: '%', radius: ' px', gap: ' px' };
+  const NAMES = {
+    dock: { bottom: 'снизу', top: 'сверху' },
+    expand: { stop: 'когда остановились', up: 'когда листаем вверх' },
+    accent: { black: 'чёрный', blue: 'синий', green: 'зелёный', orange: 'оранжевый' }
+  };
+  const summary = document.querySelector('#summary');
+  const ranges = [...document.querySelectorAll('.range[data-key]')];
+  const radios = [...document.querySelectorAll('.chips input[type="radio"]')];
+
+  function sync() {
+    ranges.forEach(range => {
+      range.value = settings[range.dataset.key];
+      range.closest('.range-row').querySelector('output').textContent = settings[range.dataset.key] + UNITS[range.dataset.key];
+    });
+    radios.forEach(radio => { radio.checked = settings[radio.name] === radio.value; });
+    summary.textContent = [
+      `Стекло: размытие ${settings.blur} px, плотность ${settings.alpha}%`,
+      `Модули: скругление ${settings.radius} px, зазор ${settings.gap} px`,
+      `Меню: ${NAMES.dock[settings.dock]}, раскрывается ${NAMES.expand[settings.expand]}`,
+      `Акцент: ${NAMES.accent[settings.accent]}`
+    ].join('\n');
+  }
+  ranges.forEach(range => range.addEventListener('input', () => { saveSettings({ [range.dataset.key]: Number(range.value) }); sync(); }));
+  radios.forEach(radio => radio.addEventListener('change', () => { saveSettings({ [radio.name]: radio.value }); sync(); }));
+  document.querySelector('#reset').addEventListener('click', () => {
+    const before = { ...settings };
+    saveSettings({ ...DEFAULTS }); sync();
+    toast('Настройки возвращены', { label: 'Отменить', run: () => { saveSettings(before); sync(); } });
+  });
+  document.querySelector('#copy').addEventListener('click', () => {
+    navigator.clipboard.writeText(summary.textContent).then(() => toast('Скопировано. Вставьте в чат'), () => toast('Не удалось скопировать'));
+  });
+  document.addEventListener('click', event => { const say = event.target.closest('[data-say]')?.dataset.say; if (say) toast(say); });
+  sync();
+});
+</script>
+</body>
+</html>

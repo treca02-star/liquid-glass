@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Шаблон страницы. Заменить: title, description, название в .brand, заголовок, модули, вкладки меню. -->
+<title>Название сайта: раздел</title>
+<meta name="description" content="Одно предложение о том, что человек делает на этой странице.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400..700&display=swap">
+<link rel="stylesheet" href="glass.css">
+<!-- Свои стили страницы, если нужны: отдельный файл после glass.css, только через токены -->
+<script src="glass.js"></script>
+</head>
+<body>
+<div class="edge-fade" aria-hidden="true"></div>
+
+<!-- Шапка: название слева, название страницы по центру (появляется при прокрутке), действия справа -->
+<header class="bar">
+  <div class="bar__inner">
+    <a class="brand glass" href="index.html" aria-label="Название сайта, на главную">
+      <svg class="brand__mark" viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="1" width="9" height="9" rx="3"/><rect x="12" y="1" width="9" height="9" rx="3" opacity=".45"/><rect x="1" y="12" width="9" height="9" rx="3" opacity=".45"/><rect x="12" y="12" width="9" height="9" rx="3"/></svg>
+      <span>Название сайта</span>
+    </a>
+    <div class="bar__title glass" aria-hidden="true">Раздел</div>
+    <div class="bar__actions">
+      <button class="icon-btn glass" type="button" popovertarget="menu-more" aria-label="Ещё действия"><svg class="icon" aria-hidden="true"><use href="#i-more"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div id="menu-more" class="menu glass" popover>
+  <div class="menu__label">Действия</div>
+  <button class="menu__item" type="button"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>Второстепенное действие</button>
+</div>
+
+<!-- app--fit: страница помещается в экран, прокручиваются только модули.
+     Для длинной страницы убрать app--fit и заменить bento на «bento bento--flow». -->
+<main class="app app--fit">
+  <div class="page-head">
+    <h1 class="page-title">Раздел</h1>
+    <p class="page-note">Одна строка: что здесь делают.</p>
+  </div>
+
+  <!-- Сетка 12 колонок на 6 рядов. cN — ширина в колонках, rN — высота в рядах. Сумма по ряду равна 12. -->
+  <div class="bento">
+    <section class="module c8 r6" aria-labelledby="h-main">
+      <div class="module__head">
+        <h2 class="module__title" id="h-main">Главный модуль</h2>
+        <span class="module__meta"></span>
+      </div>
+      <div class="module__body">
+        <p class="empty">Пока пусто. Здесь появится главное содержимое раздела.</p>
+      </div>
+    </section>
+
+    <section class="module c4 r3" aria-labelledby="h-form">
+      <div class="module__head"><h2 class="module__title" id="h-form">Ввод</h2></div>
+      <form class="stack">
+        <div class="field-row">
+          <label class="field"><span class="field__label">Поле</span><input class="input" name="value" type="text" autocomplete="off"><span class="field__hint"></span></label>
+        </div>
+        <div class="module__foot"><button class="btn" type="submit">Главное действие</button></div>
+      </form>
+    </section>
+
+    <div class="tiles c4 r3" role="group" aria-label="Быстрые действия">
+      <button class="tile" type="button"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Действие</button>
+      <button class="tile" type="button"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Действие</button>
+      <button class="tile" type="button"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>Действие</button>
+      <button class="tile" type="button"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg>Действие</button>
+    </div>
+  </div>
+</main>
+
+<!-- Меню разделов: одна вкладка на страницу, от 2 до 5. У текущей страницы aria-current="page". -->
+<div class="dockbar" data-dock>
+  <nav class="dock glass" data-lens aria-label="Разделы">
+    <a class="dock__tab" href="index.html" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg><span class="dock__label">Раздел</span></a>
+    <a class="dock__tab" href="second.html"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg><span class="dock__label">Второй раздел</span></a>
+  </nav>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const { store, toast } = glass;   // store: сохранение в браузере, toast: короткое уведомление
+  // Логика страницы
+});
+</script>
+</body>
+</html>
