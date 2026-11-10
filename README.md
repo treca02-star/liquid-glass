@@ -8,6 +8,7 @@
 
 - `skills/liquid-glass/SKILL.md` — порядок работы и главные правила.
 - `skills/liquid-glass/assets/kit/` — набор: стили, поведение и три страницы-примера.
+- `skills/liquid-glass/assets/react/glass.tsx` — то же поведение для готовых сайтов на React, без `localStorage` и с учётом строгой CSP.
 - `skills/liquid-glass/assets/design.md` — дизайн-система в формате Hallmark для корня проекта.
 - `skills/liquid-glass/references/` — раскладка, список деталей, проверка через Hallmark.
 
